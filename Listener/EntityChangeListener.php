@@ -66,8 +66,6 @@ final class EntityChangeListener
             $changes = $eventArgs->getEntityManager()->getUnitOfWork()->getEntityChangeSet($entity);
         }
 
-        $changes = array_keys($changes);
-
         $routes = $this->purgatoryService->getRoutesToPurge($entity, $changes);
 
         foreach ($routes as $route) {

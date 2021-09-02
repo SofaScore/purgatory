@@ -44,11 +44,13 @@ class Purgatory
      * ].
      *
      * @param mixed $object            Object that was changed
-     * @param array $changedProperties List of property paths (ex. ['status.description', 'userCount', ...])
+     * @param array $changes changed properties ["property" => [old_value, new_value]
      *
      */
-    public function getRoutesToPurge($object, array $changedProperties): array
+    public function getRoutesToPurge($object, array $changes): array
     {
+        $changedProperties = array_keys($changes);
+
         // check if there are changes
         if (count($changedProperties) <= 0) {
             return [];
